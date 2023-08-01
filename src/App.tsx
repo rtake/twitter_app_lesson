@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
     // クリーンアップ時にこの関数を実行
     return unSub();
-  }, [dispatch]);
+  }, []);
 
   return <div className="App"></div>;
 };
