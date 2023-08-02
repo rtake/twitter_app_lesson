@@ -6,15 +6,7 @@ import TweetInput from "./TweetInput";
 const Feed: React.FC = () => {
   return (
     <div className={styles.feed}>
-      Feed
       <TweetInput />
-      <button
-        onClick={() => {
-          auth.signOut();
-        }}
-      >
-        Logout
-      </button>
     </div>
   );
 };
