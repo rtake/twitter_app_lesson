@@ -96,6 +96,10 @@ const Auth: React.FC = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -107,6 +111,10 @@ const Auth: React.FC = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value);
+              }}
             />
             <Button
               type="submit"
