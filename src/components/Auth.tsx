@@ -78,6 +78,7 @@ const Auth: React.FC = () => {
   const [avatarImage, setAvatarImage] = useState<File | null>(null);
   const [isLogin, setIsLogin] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
 
   const onChangeImageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAvatarImage(e.target.files![0]);
