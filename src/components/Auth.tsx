@@ -17,11 +17,11 @@ import {
   Box,
 } from "@material-ui/core";
 
-import SendIcon from "@material-ui/icons";
-import CameraIcon from "@material-ui/icons";
-import EmailIcon from "@material-ui/icons";
-import LockOutlinedIcon from "@material-ui/icons";
-import AccountCircleIcon from "@material-ui/icons";
+import SendIcon from "@material-ui/icons/Send";
+import CameraIcon from "@material-ui/icons/Camera";
+import EmailIcon from "@material-ui/icons/Email";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
