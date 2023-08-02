@@ -28,7 +28,8 @@ const App: React.FC = () => {
     });
 
     // クリーンアップ時にこの関数を実行
-    return unSub();
+    // 返り値の関数がアンマウント時に実行される
+    return () => unSub();
   }, []);
 
   return (
