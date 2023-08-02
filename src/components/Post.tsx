@@ -9,7 +9,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import MssageIcon from "@material-ui/icons/Message";
 import SendIcon from "@material-ui/icons/Send";
 
-const Post: React.FC = () => {
+interface PROPS {
+  postId: string;
+  avatar: string;
+  image: string;
+  text: string;
+  timestamp: any;
+  username: string;
+}
+
+const Post: React.FC<PROPS> = (props: PROPS) => {
   return <div></div>;
 };
 
