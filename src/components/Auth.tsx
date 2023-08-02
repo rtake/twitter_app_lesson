@@ -24,6 +24,17 @@ import EmailIcon from "@material-ui/icons/Email";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
+const getModalStyle = () => {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
