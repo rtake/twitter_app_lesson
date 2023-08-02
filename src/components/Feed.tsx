@@ -4,6 +4,16 @@ import { db } from "../firebase";
 import TweetInput from "./TweetInput";
 
 const Feed: React.FC = () => {
+  const [posts, setPosts] = useState([
+    {
+      id: "",
+      avatar: "",
+      image: "",
+      text: "",
+      timestamp: null,
+      username: "",
+    },
+  ]);
   return (
     <div className={styles.feed}>
       <TweetInput />
