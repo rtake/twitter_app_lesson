@@ -78,15 +78,50 @@ const TweetInput: React.FC = () => {
     setTweetMsg("");
   };
   return (
-    <div>
-      <Avatar
-        className={styles.tweet_avatar}
-        src={user.photoUrl}
-        onClick={async () => {
-          await auth.signOut();
-        }}
-      />
-    </div>
+    <>
+      <form onSubmit={sendTweet}>
+        <div className={styles.tweet_form}>
+          <Avatar
+            className={styles.tweet_avatar}
+            src={user.photoUrl}
+            onClick={async () => {
+              await auth.signOut();
+            }}
+          />
+          <input
+            className={styles.tweet_input}
+            placeholder="What'shappening?"
+            type="text"
+            autoFocus
+            value={tweetMsg}
+            onChange={(e) => setTweetMsg(e.target.value)}
+          />
+          <IconButton>
+            <label>
+              <AddAPhotoIcon
+                className={
+                  tweetImage ? styles.tweet_addIconLoaded : styles.tweet_addIcon
+                }
+              />
+              <input
+                className={styles.tweet_hiddenIcon}
+                type="file"
+                onChange={onChangeImageHandler}
+              />
+            </label>
+          </IconButton>
+        </div>
+        <Button
+          type="submit"
+          disabled={!tweetMsg}
+          className={
+            tweetMsg ? styles.twet_sendBtn : styles.tweet_sendDisableBtn
+          }
+        >
+          Tweet
+        </Button>
+      </form>
+    </>
   );
 };
 
