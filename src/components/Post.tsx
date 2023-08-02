@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import MssageIcon from "@material-ui/icons/Message";
+import MessageIcon from "@material-ui/icons/Message";
 import SendIcon from "@material-ui/icons/Send";
 
 interface PROPS {
@@ -26,7 +26,16 @@ interface COMMENT {
   username: string;
 }
 
+const useStyles = makeStyles((theme) => ({
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+    marginRight: theme.spacing(1),
+  },
+}));
+
 const Post: React.FC<PROPS> = (props: PROPS) => {
+  const classes = useStyles();
   const user = useSelector(selectUser);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState<COMMENT[]>([
@@ -38,7 +47,7 @@ const Post: React.FC<PROPS> = (props: PROPS) => {
       timestamp: null,
     },
   ]);
-
+  const [openComments, setOpenComments] = useState(false);
   useEffect(() => {
     const unSub = db
       .collection("posts")
@@ -99,37 +108,46 @@ const Post: React.FC<PROPS> = (props: PROPS) => {
             <img src={props.image} alt="tweet" />
           </div>
         )}
-        {comments.map((com) => (
-          <div key={com.id} className={styles.post_comment}>
-            <Avatar src={com.avatar} />
-            <span className={styles.post_commentUser}>@{com.username}</span>
-            <span className={styles.post_commentText}>{com.text}</span>
-            <span className={styles.post_headerTime}>
-              {new Date(com.timestamp?.toDate()).toLocaleString()}
-            </span>
-          </div>
-        ))}
-        <form onSubmit={newComment}>
-          <div className={styles.post_form}>
-            <input
-              className={styles.post_input}
-              type="text"
-              placeholder="Type new comment..."
-              value={comment}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setComment(e.target.value);
-              }}
-            />
-            <button
-              disabled={!comment}
-              className={
-                comment ? styles.post_button : styles.post_buttonDisable
-              }
-            >
-              <SendIcon className={styles.post_sendIcon} />
-            </button>
-          </div>
-        </form>
+        <MessageIcon
+          className={styles.post_commentIcon}
+          onClick={() => setOpenComments(!openComments)}
+        />
+
+        {openComments && (
+          <>
+            {comments.map((com) => (
+              <div key={com.id} className={styles.post_comment}>
+                <Avatar src={com.avatar} className={classes.small} />
+                <span className={styles.post_commentUser}>@{com.username}</span>
+                <span className={styles.post_commentText}>{com.text}</span>
+                <span className={styles.post_headerTime}>
+                  {new Date(com.timestamp?.toDate()).toLocaleString()}
+                </span>
+              </div>
+            ))}
+            <form onSubmit={newComment}>
+              <div className={styles.post_form}>
+                <input
+                  className={styles.post_input}
+                  type="text"
+                  placeholder="Type new comment..."
+                  value={comment}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setComment(e.target.value);
+                  }}
+                />
+                <button
+                  disabled={!comment}
+                  className={
+                    comment ? styles.post_button : styles.post_buttonDisable
+                  }
+                >
+                  <SendIcon className={styles.post_sendIcon} />
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
