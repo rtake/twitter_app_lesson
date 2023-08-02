@@ -63,6 +63,13 @@ const Auth: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
 
+  const signInEmail = async () => {
+    await auth.signInWithEmailAndPassword(email, password);
+  };
+  const signUpEmail = async () => {
+    await auth.createUserWithEmailAndPassword(email, password);
+  };
+
   const signInGoogle = async () => {
     await auth.signInWithPopup(provider).catch((err) => alert(err.message));
   };
