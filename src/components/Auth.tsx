@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../features/userSlice";
 import { auth, storage, provider } from "../firebase";
 
 import {
@@ -59,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Auth: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -92,6 +94,12 @@ const Auth: React.FC = () => {
       displayName: username,
       photoURL: url,
     });
+    dispatch(
+      updateUserProfile({
+        displayName: username,
+        photoUrl: url,
+      })
+    );
   };
 
   const signInGoogle = async () => {
