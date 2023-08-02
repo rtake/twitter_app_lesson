@@ -19,7 +19,7 @@ interface PROPS {
 }
 
 const Post: React.FC<PROPS> = (props: PROPS) => {
-  return <div></div>;
+  return <div className={styles.post}></div>;
 };
 
 export default Post;
