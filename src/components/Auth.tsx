@@ -65,6 +65,11 @@ const Auth: React.FC = () => {
   const [avatarImage, setAvatarImage] = useState<File | null>(null);
   const [isLogin, setIsLogin] = useState(true);
 
+  const onChangeImageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAvatarImage(e.target.files![0]);
+    e.target.value = "";
+  };
+
   const signInEmail = async () => {
     await auth.signInWithEmailAndPassword(email, password);
   };
