@@ -9,6 +9,9 @@ import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 
 const TweetInput: React.FC = () => {
   const user = useSelector(selectUser);
+  const [tweetImage, setTweetImage] = useState<File | null>(null);
+  const [tweetMsg, setTweetMsg] = useState("");
+
   return (
     <div>
       <Avatar
