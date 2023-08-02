@@ -74,7 +74,8 @@ const Auth: React.FC = () => {
     await auth.signInWithEmailAndPassword(email, password);
   };
   const signUpEmail = async () => {
-    await auth.createUserWithEmailAndPassword(email, password);
+    const authUser = await auth.createUserWithEmailAndPassword(email, password);
+    let url = "";
   };
 
   const signInGoogle = async () => {
