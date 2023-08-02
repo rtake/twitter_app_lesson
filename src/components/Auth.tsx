@@ -23,19 +23,6 @@ import EmailIcon from "@material-ui/icons";
 import LockOutlinedIcon from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
