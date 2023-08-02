@@ -123,7 +123,7 @@ const Auth: React.FC = () => {
       const fileName = randomChar + "_" + avatarImage.name;
 
       await storage.ref(`avatars/${fileName}`).put(avatarImage);
-      url = await storage.ref("avaters").child(fileName).getDownloadURL();
+      url = await storage.ref("avatars").child(fileName).getDownloadURL();
     }
     await authUser.user?.updateProfile({
       displayName: username,
