@@ -19,7 +19,7 @@ const App: React.FC = () => {
           login({
             uid: authUser.uid,
             photoUrl: authUser.photoURL,
-            diaplayName: authUser.displayName,
+            displayName: authUser.displayName,
           })
         );
       } else {
